@@ -10,14 +10,14 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          python311
-          python311Packages.torch       # PyTorch core
-          python311Packages.torchvision # datasets + transforms
-          python311Packages.numpy
-          python311Packages.matplotlib  # plot images & curves
-          python311Packages.seaborn     # confusion matrix
-          python311Packages.pillow      # image handling
-          python311Packages.tensorboard # training viz
+          python312
+          python312Packages.torch       # PyTorch core
+          python312Packages.torchvision # datasets + transforms
+          python312Packages.numpy
+          python312Packages.matplotlib  # plot images & curves
+          python312Packages.seaborn     # confusion matrix
+          python312Packages.pillow      # image handling
+          python312Packages.tensorboard # training viz
         ];
       };
     };
