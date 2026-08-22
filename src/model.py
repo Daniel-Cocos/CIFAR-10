@@ -16,7 +16,7 @@ class CIFAR10CNN(nn.Module):
             nn.MaxPool2d(2),                # halve the spatial size
             nn.Dropout(dropout),
         )
-        # --- Block 2: 16x16 -> 8x8 ---
+        # Block 2: 16x16 to 8x8
         self.block2 = nn.Sequential(
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.BatchNorm2d(64),
@@ -27,7 +27,7 @@ class CIFAR10CNN(nn.Module):
             nn.MaxPool2d(2),
             nn.Dropout(dropout),
         )
-        # --- Block 3: 8x8 -> 4x4 ---
+        # Block 3: 8x8 to 4x4
         self.block3 = nn.Sequential(
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.BatchNorm2d(128),
@@ -43,12 +43,12 @@ class CIFAR10CNN(nn.Module):
             nn.Linear(128 * 4 * 4, 512),
             nn.ReLU(inplace=True),
             nn.Dropout(dropout),
-            nn.Linear(512, num_classes),        # 10 raw scores (logits)
+            nn.Linear(512, num_classes),        # 10 raw scores
         )
 
     def forward(self, x):
         x = self.block1(x)
         x = self.block2(x)
         x = self.block3(x)
-        x = self.clasifier(x)
+        x = self.classifier(x)
         return x
